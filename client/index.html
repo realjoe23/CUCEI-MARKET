@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market CUCEI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        :root {
+            --primary-blue: #004a87;
+            --secondary-gold: #c69f5b;
+            --background-gray: #f4f4f9;
+            --text-dark: #333;
+            --card-border-radius: 12px;
+            --box-shadow-card: 0px 4px 12px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-gray);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--secondary-gold);
+        }
+
+        header .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        #mainLogo {
+            height: 50px; 
+            width: auto;  
+            margin-right: 15px; 
+            border-radius: 8px; 
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.2); 
+        }
+
+        header .degree-title {
+            font-family: 'Poppins', sans-serif; 
+            font-size: 22px; 
+            color: white;
+            margin-right: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #user-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #view-login, #view-register, #view-menu, #view-verify, #view-results {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--box-shadow-card);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            height: 4px;
+            width: 40px;
+            background-color: var(--secondary-gold);
+            border-radius: 2px;
+        }
+
+        .card-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            padding-left: 55px; 
+        }
+
+        input[type="email"], input[type="password"], input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button.btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 100%;
+        }
+
+        button.btn-primary:hover { background-color: #003366; }
+
+        button.btn-secondary {
+            background-color: #eee;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        button.btn-secondary:hover { background-color: #e0e0e0; }
+
+        button.btn-logout {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        button.btn-logout:hover { background-color: rgba(255,255,255,0.2); }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .dashboard-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .dashboard-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .icon-blue-rounded {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            background-color: #c7d2ff;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        #results-display {
+            font-weight: bold;
+            font-size: 18px;
+            white-space: pre-wrap;
+            text-align: left;
+            background: #eee;
+            padding: 20px;
+            border-radius: var(--card-border-radius);
+            color: var(--text-dark);
+            box-shadow: inset 0px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .insignia {
+            background-color: var(--secondary-gold);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .svg-icon {
+            width: 55px; 
+            height: 55px;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+    </style>
+</head>
+<body>
+
+   <header>
+        <div class="logo-container">
+            <img src="cucei.png" alt="Logo" id="mainLogo" onerror="this.style.display='none'">
+            <div class="degree-title">Market CUCEI</div>
+        </div>
+        <div id="user-header" style="display:none">
+            <span>¡Hola <span id="display-user-name"> </span>!</span>
+            <button class="btn-logout" id="btnLogout">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <div id="view-login">
+        <div class="card" style="max-width: 450px; margin: auto; text-align: center;">
+            <div class="card-header" style="padding-left: 0;">Iniciar sesión</div>
+            <p>Ingresa tus datos para continuar con el proceso.</p>
+            
+            <input type="email" id="loginEmail" placeholder="Correo (@alumnos.udg.mx)" required>
+            
+            <div style="position: relative; width: 100%;">
+                <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                <span id="togglePassword" title="Mostrar/Ocultar contraseña" style="position: absolute; right: 15px; top: 20px; cursor: pointer; color: #666; width: 20px; height: 20px;">
+                    <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </span>
+            </div>
+            
+            <div style="text-align: right; margin-top: 5px; margin-bottom: 15px;">
+                <a href="#" id="btnForgotPassword" style="color: var(--primary-blue); font-size: 13px; text-decoration: none;">¿Olvidaste tu contraseña?</a>
+            </div>
+            <button class="btn-primary" id="btnDoLogin">Ingresar</button>
+            
+            <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
+            <button class="btn-secondary" id="btnGoToRegister">Crear cuenta</button>
+        </div>
+    </div>
+
+    <div id="view-register" style="display:none">
+        <div class="card" style="max-width: 450px; margin: auto; text-align: center;">
+            <div class="card-header" style="padding-left: 0;">Crear cuenta nueva</div>
+            <p style="color:red; font-size: 14px; font-weight: bold;">*Se enviará un enlace real de verificación a este correo.</p>
+            <input type="email" id="registerEmail" placeholder="Correo (@alumnos.udg.mx)" required>
+            <input type="password" id="registerPassword" placeholder="Crea una contraseña (min 6.)" required>
+            <br><br>
+            <button class="btn-primary" id="btnDoRegister" style="background-color: var(--secondary-gold);">Registrarse</button>
+            
+            <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
+            <button class="btn-secondary" id="btnGoToLogin">Volver al inicio de sesión</button>
+        </div>
+    </div>
+
+    <div id="view-menu" style="display:none">
+        <div class="card-header" style="padding-left: 0;">¡BIENVENIDO <span id="welcome-user-name"> </span>!</div>
+        <p>Panel principal de CUCEI Market para verificación de vendedores.</p>
+        
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">Perfil de Vendedor</div>
+                <div class="icon-blue-rounded">
+                    <svg class="svg-icon" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <p class="dashboard-label">Miembro desde: <span id="dash-fecha-creacion" class="dashboard-value">Calculando...</span></p>
+                <p>Estatus de Análisis: <span id="dash-estatus" style="color:blue; font-weight:bold;">EN PROCESO</span></p>
+                <p>Análisis de Confianza: <span id="dash-confianza" style="font-size: 24px; font-weight:bold;">0%</span></p>
+                <p class="dashboard-label">Verificaciones completas: <span id="dash-verificaciones" class="dashboard-value"> 1 de 3 (Correo)</span></p>
+                
+                <div id="insignias-container"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">VERIFICAR KARDEX</div>
+                <div class="icon-blue-rounded">
+                    <svg class="svg-icon" viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <p>Sube tu kardex (PDF o Imagen).</p>
+                <button class="btn-primary" id="btnGoToVerify">Iniciar Verificación</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-verify" style="display:none">
+        <div class="card" style="max-width: 600px; margin: auto;">
+            <div class="card-header">Verificación de Kardex</div>
+            
+            <input type="file" id="kardexInput" accept="image/*, application/pdf">
+            <br>
+            <button class="btn-primary" id="btnVerificarKardex">Verificar Kardex</button>
+            <br>
+            <button class="btn-secondary" id="btnReturnToMenu_Verify">Volver al Menú</button>
+
+            <div id="loading-message" style="display:none; margin-top: 20px; font-weight: bold; color: blue;">
+             Analizando documento
+            </div>
+        </div>
+    </div>
+
+    <div id="view-results" style="display:none">
+        <div class="card" style="max-width: 600px; margin: auto;">
+            <div class="card-header">RESULTADOS DEL ANÁLISIS</div>
+            <div id="results-display"></div>
+            <br>
+            <button class="btn-primary" id="btnContinueToMarket" style="display:none;">Continuar a CUCEI Market</button>
+            <br>
+            <button class="btn-secondary" id="btnReturnToMenu_Results">Volver al Menú</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';</script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBlElRlC390vtHoJtZ3ihqkkZ2YXo3XfWk",
+            authDomain: "cuceimarketanticheats.firebaseapp.com",
+            projectId: "cuceimarketanticheats",
+            storageBucket: "cuceimarketanticheats.firebasestorage.app",
+            messagingSenderId: "386444856338",
+            appId: "1:386444856338:web:4050cca96fbec00781dccb"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const views = ['view-login', 'view-register', 'view-menu', 'view-verify', 'view-results'];
+        
+        function showView(viewId) {
+            views.forEach(v => document.getElementById(v).style.display = 'none');
+            document.getElementById(viewId).style.display = 'block';
+        }
+
+        document.getElementById('btnGoToRegister').addEventListener('click', () => showView('view-register'));
+        document.getElementById('btnGoToLogin').addEventListener('click', () => showView('view-login'));
+        document.getElementById('btnReturnToMenu_Verify').addEventListener('click', () => showView('view-menu'));
+        document.getElementById('btnReturnToMenu_Results').addEventListener('click', () => showView('view-menu'));
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                if (user.emailVerified) {
+                    document.getElementById('display-user-name').innerText = user.email;
+                    document.getElementById('welcome-user-name').innerText = `${user.email.split('@')[0].toUpperCase()}`;
+                    
+                    const fechaCreacion = new Date(user.metadata.creationTime);
+                    const opcionesFecha = { day: 'numeric', month: 'long', year: 'numeric' };
+                    document.getElementById('dash-fecha-creacion').innerText = fechaCreacion.toLocaleDateString('es-MX', opcionesFecha);
+
+                    document.getElementById('user-header').style.display = 'flex';
+                    showView('view-menu');
+                } else {
+                    alert("No has verificado tu correo. Revisa tu bandeja de entrada o spam.");
+                    signOut(auth);
+                }
+            } else {
+                document.getElementById('user-header').style.display = 'none';
+                showView('view-login');
+            }
+        });
+
+        document.getElementById('btnDoRegister').addEventListener('click', () => {
+            const email = document.getElementById('registerEmail').value.toLowerCase().trim();
+            const password = document.getElementById('registerPassword').value;
+
+            if (email === '' && password === '') return alert("Por favor, llena ambos campos para registrarte.");
+            if (email === '') return alert("Por favor, ingresa tu correo institucional.");
+            if (password === '') return alert("Por favor, crea una contraseña.");
+
+            if (!email.endsWith('@alumnos.udg.mx') && !email.endsWith('@cucei.udg.mx')) {
+                return alert("Solo se permiten correos institucionales de la UDG.");
+            }
+            if (password.length < 6) return alert("Firebase exige mínimo 6 caracteres en la contraseña.");
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    sendEmailVerification(userCredential.user).then(() => {
+                        alert(`¡Cuenta creada exitosamente!\n\nTe acabamos de enviar un correo a: ${email}\n\nDEBES DAR CLIC EN EL ENLACE DEL CORREO PARA ACTIVAR TU CUENTA ANTES DE INICIAR SESIÓN.`);
+                        signOut(auth);
+                        showView('view-login');
+                    });
+                })
+                .catch((error) => {
+                    if(error.code === 'auth/email-already-in-use') alert("Este correo ya está registrado.");
+                    else alert("Error: " + error.message);
+                });
+        });
+
+        document.getElementById('btnDoLogin').addEventListener('click', () => {
+            const email = document.getElementById('loginEmail').value.toLowerCase().trim();
+            const password = document.getElementById('loginPassword').value;
+
+            if (email === '' || password === '') return alert("Por favor, llena tu correo y contraseña para ingresar.");
+
+            signInWithEmailAndPassword(auth, email, password)
+                .catch((error) => {
+                    alert("Correo o contraseña incorrectos.");
+                });
+        });
+
+        const togglePassword = document.querySelector('#togglePassword');
+        const loginPasswordInput = document.querySelector('#loginPassword');
+        const eyeIcon = document.querySelector('#eyeIcon');
+
+        togglePassword.addEventListener('click', function () {
+            const type = loginPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            loginPasswordInput.setAttribute('type', type);
+            
+            if (type === 'password') {
+                eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+            } else {
+                eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+            }
+        });
+
+        document.getElementById('btnForgotPassword').addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.toLowerCase().trim();
+
+            if (!email) return alert("Escribe tu correo en el campo de arriba para poder enviarte el enlace de recuperación.");
+
+            sendPasswordResetEmail(auth, email)
+                .then(() => alert("¡Enlace enviado! Revisa tu correo (y el spam) para restablecer tu contraseña."))
+                .catch((error) => {
+                    if(error.code === 'auth/user-not-found') alert("Este correo no está registrado.");
+                    else alert("Error: " + error.message);
+                });
+        });
+
+        document.getElementById('btnLogout').addEventListener('click', () => {
+            signOut(auth).then(() => alert("Sesión cerrada correctamente."));
+        });
+
+        document.getElementById('btnGoToVerify').addEventListener('click', () => showView('view-verify'));
+        const fileInput = document.getElementById('kardexInput');
+        const resultsDisplay = document.getElementById('results-display');
+        const loadingMessage = document.getElementById('loading-message');
+        const btnContinueToMarket = document.getElementById('btnContinueToMarket');
+
+        document.getElementById('btnVerificarKardex').addEventListener('click', () => {
+            if (fileInput.files.length === 0) return alert("Selecciona un archivo.");
+            const archivoKardex = fileInput.files[0];
+            loadingMessage.style.display = "block"; 
+            resultsDisplay.innerHTML = ""; 
+
+            if (archivoKardex.type === "application/pdf") {
+                const fileReader = new FileReader();
+                fileReader.onload = function() {
+                    const typedarray = new Uint8Array(this.result);
+                    pdfjsLib.getDocument(typedarray).promise.then(pdf => {
+                        pdf.getPage(1).then(page => {
+                            page.getTextContent().then(textContent => {
+                                const textoExtraido = textContent.items.map(item => item.str).join(" ");
+                                analizarYMostrarResultados(textoExtraido);
+                            });
+                        });
+                    }).catch(() => mostrarError("Error leyendo PDF."));
+                };
+                fileReader.readAsArrayBuffer(archivoKardex);
+            } else if (archivoKardex.type.startsWith("image/")) {
+                Tesseract.recognize(archivoKardex, 'spa')
+                .then(({ data: { text } }) => analizarYMostrarResultados(text))
+                .catch(() => mostrarError("Error en OCR."));
+            } else {
+                mostrarError("Formato no soportado.");
+            }
+        });
+
+        function analizarYMostrarResultados(textoExtraido) {
+            loadingMessage.style.display = "none"; 
+            const textoKardex = textoExtraido.toUpperCase().replace(/\s+/g, ' ');
+
+            const esActivo = textoKardex.includes('ACTIVO') || textoKardex.includes('ESTATUS: ACTIVO');
+            let promedioAlumno = 0;
+            const reglaPromedio = /PROMEDIO.{0,20}?(\d{2,3}(\.\d{1,2})?)/i;
+            const resultadoPromedio = textoKardex.match(reglaPromedio);
+            
+            if (resultadoPromedio && resultadoPromedio[1]) promedioAlumno = parseFloat(resultadoPromedio[1]);
+            else {
+                const todosLosNumeros = textoKardex.match(/\d{2}(\.\d{1,2})?/g);
+                if (todosLosNumeros) {
+                    for(let i = todosLosNumeros.length - 1; i >= 0; i--) {
+                        let num = parseFloat(todosLosNumeros[i]);
+                        if(num >= 60 && num <= 100) { promedioAlumno = num; break; }
+                    }
+                }
+            }
+            if (promedioAlumno > 100) promedioAlumno = 0;
+            const fechaReciente = /(2025|2026)/.test(textoKardex);
+
+            let mensajeFinal = `--- ANÁLISIS DE KARDEX ---\n\n`;
+            mensajeFinal += `Estatus Detectado: ${esActivo ? 'Activo' : 'No detectado'}\n`;
+            mensajeFinal += `Promedio Detectado: ${promedioAlumno > 0 ? promedioAlumno : 'Inválido'}\n`;
+            mensajeFinal += `Fecha Reciente (2025/2026): ${fechaReciente ? 'Sí' : 'No'}\n\n`;
+
+            if (esActivo && promedioAlumno >= 70 && promedioAlumno <= 100 && fechaReciente) {
+                mensajeFinal += "Solicitud Aprobada: ¡Bienvenido a CUCEI Market!";
+                resultsDisplay.style.color = "green";
+                btnContinueToMarket.style.display = 'block'; 
+
+                document.getElementById('dash-estatus').innerText = "VERIFICADO";
+                document.getElementById('dash-estatus').style.color = "green";
+                document.getElementById('dash-confianza').innerText = "100%";
+                document.getElementById('dash-verificaciones').innerText = "2 de 3 (Kardex )";
+                
+                document.getElementById('insignias-container').innerHTML = `
+                    <div class="insignia">🦁 Bienvenido a la manada</div>
+                    <div class="insignia" style="background-color: #800020; margin-left: 5px;">2026-A</div>
+                `;
+
+            } else {
+                mensajeFinal += "Solicitud Denegada: No cumples con los requisitos (Activo, Promedio > 70, Reciente).";
+                resultsDisplay.style.color = "red";
+                btnContinueToMarket.style.display = 'none';
+            }
+
+            resultsDisplay.innerHTML = mensajeFinal;
+            showView('view-results'); 
+        }
+
+        function mostrarError(mensaje) {
+            loadingMessage.style.display = "none";
+            resultsDisplay.innerHTML = mensaje;
+            resultsDisplay.style.color = "red";
+            btnContinueToMarket.style.display = 'none';
+            showView('view-results');
+        } 
+
+        btnContinueToMarket.addEventListener('click', () => alert("¡Felicidades! Serás redirigido."));
+    </script>
+</body>
+</html>
