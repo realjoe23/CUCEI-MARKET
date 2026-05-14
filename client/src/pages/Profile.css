@@ -1,0 +1,174 @@
+.profile-page {
+  min-height: 100vh;
+  background: var(--blue-bg);
+  padding: 40px 20px;
+}
+
+.profile-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ── Card ── */
+.profile-card {
+  background: #fff;
+  border-radius: var(--card-radius);
+  padding: 2rem;
+  border: 1px solid var(--blue-border);
+  box-shadow: 0 4px 20px rgba(12, 68, 124, 0.05);
+  margin-bottom: 24px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--blue-dark);
+  margin-bottom: 1.25rem;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--blue-bg);
+}
+
+/* ── Profile header ── */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  background: #c7d2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.profile-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-dark);
+}
+
+.profile-email {
+  font-size: 13px;
+  color: var(--blue-muted);
+}
+
+.profile-since {
+  font-size: 13px;
+  color: var(--blue-muted);
+  margin-top: 4px;
+}
+
+/* ── Stats row ── */
+.profile-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.stat-item {
+  flex: 1;
+  min-width: 120px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--blue-muted);
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--blue-dark);
+}
+
+/* ── Badges ── */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-pending  { background: #fef9e7; color: #d68910; border: 1px solid #f9e79f; }
+.badge-approved { background: #eafaf1; color: #1e8449; border: 1px solid #a9dfbf; }
+.badge-rejected { background: var(--red-bg); color: var(--red-main); border: 1px solid var(--red-light); }
+
+/* ── Button ── */
+.btn-primary {
+  padding: 10px 20px;
+  background: var(--blue-main);
+  color: #fff;
+  border: none;
+  border-radius: var(--input-radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover { background: var(--blue-mid); }
+
+/* ── Requests table ── */
+.requests-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.requests-table th {
+  padding: 8px 12px;
+  color: var(--blue-muted);
+  text-align: left;
+  border-bottom: 2px solid var(--blue-bg);
+  font-weight: 500;
+}
+
+.requests-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--blue-bg);
+}
+
+.requests-table td:first-child { font-weight: 600; color: var(--blue-dark); }
+.requests-table td:not(:first-child) { color: var(--blue-muted); }
+
+/* ── Alert ── */
+.alert-info {
+  font-size: 13px;
+  color: var(--blue-mid);
+  background: var(--blue-bg);
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--blue-light);
+}
+
+/* ── Divider ── */
+.divider {
+  border: 0;
+  border-top: 1px solid var(--blue-bg);
+  margin: 1.25rem 0;
+}
+
+/* ── Spinner ── */
+.spinner {
+  border: 3px solid var(--blue-bg);
+  border-top: 3px solid var(--blue-main);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
