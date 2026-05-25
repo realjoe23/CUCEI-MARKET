@@ -201,7 +201,7 @@ CUCEI_MARKET/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/CUCEI_MARKET.git
+git clone https://github.com/realjoe23/CUCEI-MARKET
 cd CUCEI_MARKET
 ```
 
