@@ -1,0 +1,276 @@
+/* ============================================================
+   Auth.css — Estilos compartidos para Login y Register
+   ============================================================ */
+
+/* ── Página completa centrada ────────────────────────────── */
+.auth-page {
+  min-height: calc(100vh - var(--navbar-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    var(--blue-main) 0%,
+    var(--blue-bg)   65%
+  );
+}
+
+/* ── Tarjeta principal ───────────────────────────────────── */
+.auth-card {
+  background: var(--blue-dark);
+  border: 1px solid var(--blue-border);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Logo / ícono superior ───────────────────────────────── */
+.auth-logo {
+  width: 62px;
+  height: 62px;
+  background: var(--blue-light);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.9rem;
+  margin: 0 auto;
+}
+
+/* ── Título ──────────────────────────────────────────────── */
+.auth-card h1 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: var(--gray-400);
+  font-size: 0.85rem;
+  margin-top: -0.75rem;
+}
+
+/* ── Tabs de rol (Alumno / Admin) ────────────────────────── */
+.role-tabs {
+  display: flex;
+  background: var(--blue-bg);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.role-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--gray-400);
+  padding: 0.48rem 0.5rem;
+  border-radius: 7px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.role-tab.active {
+  background: var(--blue-main);
+  color: var(--white);
+}
+
+.role-tab.active.admin {
+  background: var(--accent);
+}
+
+/* ── Formulario ──────────────────────────────────────────── */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+/* ── Grupo de input ──────────────────────────────────────── */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gray-400);
+  letter-spacing: 0.01em;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  background: var(--blue-bg);
+  border: 1px solid var(--blue-border);
+  border-radius: 9px;
+  color: var(--white);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.92rem;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: var(--gray-400);
+  opacity: 0.8;
+}
+
+/* ── Wrapper de contraseña con botón ver/ocultar ─────────── */
+.pw-wrap {
+  position: relative;
+}
+
+.pw-wrap input {
+  padding-right: 2.75rem;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.05rem;
+  color: var(--gray-400);
+  padding: 2px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.pw-toggle:hover {
+  color: var(--white);
+}
+
+/* ── Mensajes de estado ──────────────────────────────────── */
+.auth-error {
+  color: var(--red-main);
+  font-size: 0.83rem;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 8px;
+}
+
+.auth-success {
+  color: var(--green-main);
+  font-size: 0.83rem;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 8px;
+}
+
+/* ── Botón principal ─────────────────────────────────────── */
+.btn-auth {
+  background: var(--blue-mid);
+  color: var(--white);
+  border: none;
+  padding: 0.72rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  width: 100%;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btn-auth:hover:not(:disabled) {
+  background: var(--blue-muted);
+}
+
+.btn-auth.admin {
+  background: var(--accent);
+}
+
+.btn-auth.admin:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn-auth:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Botón de enlace (restablecer contraseña) ────────────── */
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--blue-muted);
+  font-size: 0.82rem;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.btn-link:hover {
+  color: var(--white);
+}
+
+/* ── Divisor ─────────────────────────────────────────────── */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--gray-400);
+  font-size: 0.8rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--blue-border);
+}
+
+/* ── Botón secundario (link a otra pantalla) ─────────────── */
+.btn-auth-secondary {
+  display: block;
+  border: 1px solid var(--blue-border);
+  color: var(--white);
+  padding: 0.65rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.btn-auth-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 420px) {
+  .auth-card {
+    padding: 2rem 1.25rem;
+    border-radius: 16px;
+  }
+}

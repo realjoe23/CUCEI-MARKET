@@ -1,0 +1,132 @@
+/* ============================================================
+   StoreCard.css
+   ============================================================ */
+
+.store-card {
+  background: var(--blue-dark);
+  border: 1px solid var(--blue-border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  outline: none;
+}
+
+.store-card:hover,
+.store-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--blue-muted);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Imagen ──────────────────────────────────────────────── */
+.store-card-img {
+  position: relative;
+  height: 158px;
+  background: var(--blue-main);
+  overflow: hidden;
+}
+
+.store-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.store-card:hover .store-card-img img {
+  transform: scale(1.04);
+}
+
+.store-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  color: var(--blue-muted);
+}
+
+/* Badges de estado */
+.store-badge-open,
+.store-badge-closed {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.store-badge-open {
+  background: var(--green-main);
+  color: #052e16;
+}
+
+.store-badge-closed {
+  background: rgba(148, 163, 184, 0.2);
+  color: var(--gray-400);
+  border: 1px solid var(--blue-border);
+}
+
+/* ── Cuerpo ──────────────────────────────────────────────── */
+.store-card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.store-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.store-name {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.3;
+  margin: 0.1rem 0 0.2rem;
+}
+
+.store-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  line-height: 1.4;
+}
+
+.detail-icon {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  margin-top: 1px;
+}
+
+/* ── Rating ──────────────────────────────────────────────── */
+.store-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+}
+
+.rating-stars {
+  color: var(--yellow);
+  font-size: 0.82rem;
+  letter-spacing: 1.5px;
+}
+
+.rating-count {
+  font-size: 0.76rem;
+  color: var(--gray-400);
+}

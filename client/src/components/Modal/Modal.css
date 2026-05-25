@@ -1,0 +1,135 @@
+/* ============================================================
+   Modal.css
+   ============================================================ */
+
+/* ── Fondo oscuro ────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+/* ── Caja del modal ──────────────────────────────────────── */
+.modal-box {
+  background: var(--blue-dark);
+  border: 1px solid var(--blue-border);
+  border-radius: var(--card-radius);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--shadow-lg);
+  animation: modalIn 0.22s ease;
+  overflow: hidden;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ── Encabezado ──────────────────────────────────────────── */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--blue-border);
+}
+
+.modal-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--gray-400);
+  font-size: 0.95rem;
+  padding: 4px 6px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: color 0.2s, background 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Cuerpo ──────────────────────────────────────────────── */
+.modal-body {
+  padding: 1.5rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--gray-400);
+}
+
+/* ── Footer con botones ──────────────────────────────────── */
+.modal-footer {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--blue-border);
+}
+
+/* Botón cancelar */
+.modal-btn-cancel {
+  background: none;
+  border: 1px solid var(--blue-border);
+  color: var(--gray-400);
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.modal-btn-cancel:hover {
+  border-color: var(--gray-400);
+  color: var(--white);
+}
+
+/* Botón confirmar */
+.modal-btn-confirm {
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.modal-btn-confirm:hover {
+  background: var(--accent-hover);
+}
+
+.modal-btn-confirm:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Variante peligrosa (eliminar, rechazar) */
+.modal-btn-confirm.danger {
+  background: var(--red-main);
+}
+
+.modal-btn-confirm.danger:hover {
+  background: #dc2626;
+}

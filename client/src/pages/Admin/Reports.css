@@ -1,0 +1,330 @@
+/* ============================================================
+   Reports.css
+   Vista de métricas gráficas — CUCEI Market (Admin)
+   ============================================================ */
+
+/* ── Layout general ──────────────────────────────────────── */
+.reports-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ── Encabezado ──────────────────────────────────────────── */
+.reports-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--gray-400);
+  font-size: 0.83rem;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--white); }
+
+.reports-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.reports-header p {
+  color: var(--gray-400);
+  font-size: 0.88rem;
+  margin-top: 0.2rem;
+}
+
+/* Selector de período */
+.period-selector {
+  display: flex;
+  gap: 0.4rem;
+  background: var(--blue-dark);
+  border: 1px solid var(--blue-border);
+  border-radius: 10px;
+  padding: 0.3rem;
+  align-self: flex-end;
+}
+.period-btn {
+  background: none;
+  border: none;
+  color: var(--gray-400);
+  padding: 0.4rem 0.9rem;
+  border-radius: 7px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.period-btn:hover  { color: var(--white); }
+.period-btn.active {
+  background: var(--blue-mid);
+  color: var(--white);
+}
+
+/* ── KPI Cards ───────────────────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.kpi-card {
+  background: var(--blue-dark);
+  border: 1px solid var(--blue-border);
+  border-radius: var(--card-radius);
+  padding: 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.kpi-card:hover { transform: translateY(-2px); }
+
+.kpi-card.highlight-yellow {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.kpi-icon  { font-size: 1.5rem; }
+.kpi-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  font-family: var(--font-mono);
+}
+.kpi-label {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  line-height: 1.3;
+}
+
+/* ── Filas de gráficas ───────────────────────────────────── */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Tarjeta de gráfica */
+.chart-card {
+  background: var(--blue-dark);
+  border: 1px solid var(--blue-border);
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  min-width: 0; /* Evita overflow con recharts */
+}
+.chart-card.wide {
+  grid-column: span 1; /* Se puede sobreescribir si solo hay 1 en la fila */
+}
+
+/* Cuando solo hay 2 en una fila de 2, el que tiene .wide ocupa más */
+.charts-row > .chart-card.wide:only-child {
+  grid-column: 1 / -1;
+}
+
+.chart-title {
+  font-size: 0.97rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.chart-subtitle {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  margin-bottom: 1.25rem;
+}
+
+.chart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  color: var(--gray-400);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+/* ── Tooltip personalizado (Recharts) ────────────────────── */
+.chart-tooltip {
+  background: var(--blue-dark);
+  border: 1px solid var(--blue-border);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.83rem;
+  box-shadow: var(--shadow-md);
+}
+.tooltip-label {
+  color: var(--gray-400);
+  font-size: 0.78rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+.chart-tooltip p { margin: 0.15rem 0; }
+.chart-tooltip strong { color: var(--white); }
+
+/* ── Leyenda del Pie ─────────────────────────────────────── */
+.pie-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.pie-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.pie-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pie-legend-label {
+  flex: 1;
+  font-size: 0.82rem;
+  color: var(--gray-400);
+}
+.pie-legend-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--white);
+  font-family: var(--font-mono);
+}
+
+/* ── Sección de incidentes ───────────────────────────────── */
+.incidents-section {
+  margin-top: 0.5rem;
+}
+
+.incidents-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.incidents-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.incidents-count {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  background: var(--blue-dark);
+  border: 1px solid var(--blue-border);
+  border-radius: 6px;
+  padding: 0.25rem 0.7rem;
+}
+
+/* Tabla de incidentes */
+.incidents-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--card-radius);
+  border: 1px solid var(--blue-border);
+}
+
+.incidents-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+.incidents-table th {
+  background: var(--blue-dark);
+  color: var(--gray-400);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--blue-border);
+  white-space: nowrap;
+}
+.incidents-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--blue-border);
+  vertical-align: middle;
+}
+.incidents-table tr:last-child td { border-bottom: none; }
+.incidents-table tbody tr {
+  background: var(--blue-dark);
+  transition: background 0.15s;
+}
+.incidents-table tbody tr:hover { background: rgba(37, 87, 167, 0.1); }
+
+.incident-date {
+  white-space: nowrap;
+  color: var(--gray-400);
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+}
+.incident-desc {
+  color: var(--gray-400);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  max-width: 420px;
+}
+
+/* Badges de tipo de incidente */
+.incident-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.incident-badge.aprobacion {
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--green-main);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.incident-badge.rechazo {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--red-main);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+.incident-badge.suspension {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--gray-400);
+  border: 1px solid var(--blue-border);
+}
+.incident-badge.reactivacion {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Colorear la fila completa según tipo */
+.incident-row.aprobacion  { border-left: 2px solid var(--green-main); }
+.incident-row.rechazo     { border-left: 2px solid var(--red-main); }
+.incident-row.suspension  { border-left: 2px solid var(--gray-400); }
+.incident-row.reactivacion{ border-left: 2px solid var(--accent); }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .reports-page   { padding: 1.5rem 1rem 3rem; }
+  .reports-header { flex-direction: column; }
+  .period-selector{ align-self: flex-start; }
+
+  .kpi-grid       { grid-template-columns: repeat(3, 1fr); }
+  .kpi-value      { font-size: 1.5rem; }
+
+  .charts-row     { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+}

@@ -1,0 +1,26 @@
+/* EditProfile.css */
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-400);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--blue-border);
+}
+
+.pw-wrap { position: relative; }
+.pw-wrap input { padding-right: 2.75rem; }
+.pw-toggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.05rem;
+  color: var(--gray-400);
+  padding: 2px;
+  transition: color 0.2s;
+}
+.pw-toggle:hover { color: var(--white); }

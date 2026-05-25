@@ -1,0 +1,15 @@
+/* AddStore.css */
+
+.image-preview {
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--blue-border);
+  max-height: 200px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}

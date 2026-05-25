@@ -1,0 +1,133 @@
+/* SellerDashboard.css */
+
+.dash-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dash-header-text h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
+.dash-header-text p  { color: var(--gray-400); font-size: 0.88rem; margin-top: 0.25rem; }
+.dash-header-text strong { color: var(--white); }
+
+/* Pill de estado */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.status-pill.yellow { background: rgba(245,158,11,.12); color: var(--yellow);     border: 1px solid rgba(245,158,11,.35); }
+.status-pill.green  { background: rgba(34,197,94,.12);  color: var(--green-main); border: 1px solid rgba(34,197,94,.35); }
+.status-pill.red    { background: rgba(239,68,68,.12);  color: var(--red-main);   border: 1px solid rgba(239,68,68,.35); }
+.status-pill.gray   { background: rgba(148,163,184,.1); color: var(--gray-400);   border: 1px solid var(--blue-border); }
+
+/* Banners */
+.info-banner {
+  border-radius: var(--card-radius);
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.info-banner.yellow { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.25); }
+.info-banner.red    { background: rgba(239,68,68,.08);  border: 1px solid rgba(239,68,68,.25); }
+.info-banner.gray   { background: rgba(148,163,184,.06);border: 1px solid var(--blue-border); }
+
+.banner-content { flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
+.banner-content h3  { font-size: 1rem; font-weight: 600; }
+.banner-content p   { font-size: 0.88rem; color: var(--gray-400); line-height: 1.5; }
+.banner-content strong { color: var(--white); }
+
+.banner-btn {
+  background: var(--accent);
+  color: var(--white);
+  padding: 0.5rem 1.2rem;
+  border-radius: 9px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  white-space: nowrap;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+.banner-btn:hover { background: var(--accent-hover); }
+
+/* Acciones rápidas */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.action-card {
+  background: var(--blue-dark);
+  border: 1px solid var(--blue-border);
+  border-radius: var(--card-radius);
+  padding: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.action-card:hover:not(.disabled) { border-color: var(--accent); transform: translateY(-2px); }
+.action-card.disabled { opacity: 0.4; cursor: not-allowed; }
+
+.action-icon { font-size: 1.9rem; flex-shrink: 0; }
+.action-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
+.action-card p  { font-size: 0.8rem; color: var(--gray-400); }
+
+/* Snapshot del puesto */
+.store-snapshot { margin-top: 0; }
+
+.snapshot-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.snapshot-top h2      { font-size: 1.1rem; font-weight: 600; }
+.snapshot-location    { color: var(--gray-400); font-size: 0.83rem; margin-top: 0.2rem; }
+
+.store-status-dot {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+}
+.store-status-dot.activo   { color: var(--green-main); background: rgba(34,197,94,.1); }
+.store-status-dot.inactivo { color: var(--gray-400);   background: rgba(148,163,184,.1); }
+
+.snapshot-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 0;
+}
+.stat-value { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 0.78rem; color: var(--gray-400); }
+.stat-divider { width: 1px; height: 40px; background: var(--blue-border); }
+
+@media (max-width: 480px) {
+  .info-banner { flex-direction: column; }
+  .banner-btn  { width: 100%; text-align: center; }
+}

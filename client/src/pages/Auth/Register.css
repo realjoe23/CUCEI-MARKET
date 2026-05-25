@@ -1,0 +1,49 @@
+/* ============================================================
+   Register.css — Estilos adicionales exclusivos del Register
+   Importar después de Auth.css en Register.jsx
+   ============================================================ */
+
+/* ── Indicador de fuerza de contraseña ──────────────────── */
+.pw-strength {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.pw-strength-bar {
+  flex: 1;
+  height: 5px;
+  background: var(--blue-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.pw-strength-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.35s ease, background 0.35s ease;
+}
+
+.pw-strength span {
+  font-size: 0.74rem;
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: 56px;
+  text-align: right;
+}
+
+/* ── Nota informativa de estado pendiente ────────────────── */
+.register-note {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+  background: rgba(30, 58, 95, 0.5);
+  border: 1px solid var(--blue-border);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  line-height: 1.5;
+}
+
+.register-note strong {
+  color: var(--yellow);
+}

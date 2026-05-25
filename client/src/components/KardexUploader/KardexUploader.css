@@ -1,0 +1,158 @@
+/* ============================================================
+   KardexUploader.css
+   ============================================================ */
+
+.kardex-uploader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ── Zona de arrastre ────────────────────────────────────── */
+.drop-zone {
+  border: 2px dashed var(--blue-muted);
+  border-radius: var(--card-radius);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  text-align: center;
+  color: var(--gray-400);
+  font-size: 0.88rem;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  user-select: none;
+  outline: none;
+}
+
+.drop-zone:hover,
+.drop-zone:focus-visible,
+.drop-zone.dragging {
+  border-color: var(--accent);
+  background: rgba(59, 130, 246, 0.06);
+  color: var(--white);
+}
+
+.drop-zone.has-file {
+  border-color: var(--accent);
+  background: rgba(59, 130, 246, 0.05);
+  color: var(--white);
+}
+
+/* Ícono */
+.dz-icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+/* Textos */
+.dz-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.dz-label u {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.dz-hint {
+  font-size: 0.76rem;
+  color: var(--gray-400);
+}
+
+.dz-filename {
+  font-weight: 600;
+  font-size: 0.88rem;
+  word-break: break-all;
+  color: var(--white);
+}
+
+.dz-size {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+}
+
+/* ── Estado de éxito ─────────────────────────────────────── */
+.upload-success {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.88rem;
+  color: var(--green-main);
+}
+
+.btn-reset-upload {
+  margin-left: auto;
+  background: none;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: var(--green-main);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  transition: all 0.2s;
+}
+
+.btn-reset-upload:hover {
+  background: rgba(34, 197, 94, 0.12);
+}
+
+/* ── Error ───────────────────────────────────────────────── */
+.upload-error {
+  color: var(--red-main);
+  font-size: 0.83rem;
+  padding: 0.1rem 0.25rem;
+}
+
+/* ── Barra de progreso ───────────────────────────────────── */
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 7px;
+  background: var(--blue-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue-mid), var(--accent));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  font-size: 0.78rem;
+  color: var(--gray-400);
+  font-family: var(--font-mono);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ── Botón de subida ─────────────────────────────────────── */
+.btn-upload {
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 9px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+
+.btn-upload:hover {
+  background: var(--accent-hover);
+}
