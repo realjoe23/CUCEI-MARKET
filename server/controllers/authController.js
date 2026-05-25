@@ -19,7 +19,8 @@ exports.registrarUsuario = async (req, res) => {
 
         // 2. Subir el PDF a Supabase Storage
         // Creamos un nombre único para el archivo usando el código del estudiante y la fecha
-        const fileName = `${codigo}-${Date.now()}.pdf`;
+        const safeCodigo = (codigo || 'sin-codigo').toString().replace(/[^a-zA-Z0-9]/g, '-');
+        const fileName = `kardex-${safeCodigo}-${Date.now()}.pdf`;
 
         const { data: storageData, error: storageError } = await supabase
             .storage

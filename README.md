@@ -7,6 +7,8 @@
 ![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
+🌐 **Demo en vivo:** [cucei-market.vercel.app](https://cucei-market.vercel.app)
+
 **Plataforma de administración y catálogo de puestos comerciales del CUCEI, Universidad de Guadalajara.**
 
 </div>
