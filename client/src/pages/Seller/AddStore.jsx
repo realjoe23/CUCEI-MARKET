@@ -5,6 +5,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { API_URL } from '../../config';
 import './Seller.css';
 import './AddStore.css';
 
@@ -51,7 +52,7 @@ export default function AddStore() {
         vendedor_id: parseInt(user.id_usuario) // Aseguramos que sea número
       };
 
-      const response = await fetch('http://localhost:3001/api/stores', {
+      const response = await fetch(`${API_URL}/api/stores`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json' 

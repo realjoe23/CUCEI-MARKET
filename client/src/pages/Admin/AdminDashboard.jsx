@@ -7,6 +7,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { API_URL } from '../../config';
 import Modal from '../../components/Modal/Modal';
 import './AdminDashboard.css';
 
@@ -63,7 +64,7 @@ export default function AdminDashboard() {
   // ── Cargar usuarios desde tu servidor Node.js ─────────────
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/admin/users');
+      const response = await fetch(`${API_URL}/api/admin/users`);
       if (!response.ok) throw new Error('Error al conectar con el servidor');
       const data = await response.json();
       const mappedUsers = data.map((u) => ({
@@ -94,7 +95,7 @@ export default function AdminDashboard() {
 
   const fetchStores = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/admin/stores');
+      const res = await fetch(`${API_URL}/api/admin/stores`);
       const data = await res.json();
       setStores(data.map(s => ({
         id:          s.id_puesto,
@@ -119,7 +120,7 @@ export default function AdminDashboard() {
   const updateStatusInDb = async (userId, newStatus, reason = null) => {
     setActionLoading(true);
     try {
-      const response = await fetch(`http://localhost:3001/api/admin/users/${userId}/status`, {
+      const response = await fetch(`${API_URL}/api/admin/users/${userId}/status`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus, reason })
@@ -172,7 +173,7 @@ export default function AdminDashboard() {
   const updateStoreStatus = async (storeId, nuevoEstado) => {
     setActionLoading(true);
     try {
-      const res = await fetch(`http://localhost:3001/api/admin/stores/${storeId}/status`, {
+      const res = await fetch(`${API_URL}/api/admin/stores/${storeId}/status`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ estado: nuevoEstado }),

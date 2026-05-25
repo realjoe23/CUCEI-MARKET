@@ -6,6 +6,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { API_URL } from '../../config';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Modal       from '../../components/Modal/Modal';
 import './Seller.css';
@@ -42,7 +43,7 @@ export default function ManageProducts() {
     const cargarDatos = async () => {
       try {
         console.log('Buscando puestos para vendedor_id:', user.id_usuario);
-        const storeRes = await fetch(`http://localhost:3001/api/stores/vendedor/${user.id_usuario}`);
+        const storeRes = await fetch(`${API_URL}/api/stores/vendedor/${user.id_usuario}`);
         const storeJson = await storeRes.json();
         if (!storeRes.ok) {
           setStoreError(storeJson.error || 'No se encontró tu puesto');
@@ -54,7 +55,7 @@ export default function ManageProducts() {
         const primero = storeJson[0];
         setStoreId(primero.id_puesto);
         setStoreActive(primero.estado === 'activo');
-        const prodRes = await fetch(`http://localhost:3001/api/stores/${primero.id_puesto}/products`);
+        const prodRes = await fetch(`${API_URL}/api/stores/${primero.id_puesto}/products`);
         const prods = await prodRes.json();
         setProducts(prods.map(p => ({
           id: p.id_producto, name: p.nombre, price: p.precio,
@@ -77,7 +78,7 @@ export default function ManageProducts() {
     setStoreId(store.id_puesto);
     setStoreActive(store.estado === 'activo');
     setLoading(true);
-    const prodRes = await fetch(`http://localhost:3001/api/stores/${store.id_puesto}/products`);
+    const prodRes = await fetch(`${API_URL}/api/stores/${store.id_puesto}/products`);
     const prods = await prodRes.json();
     setProducts(prods.map(p => ({
       id: p.id_producto, name: p.nombre, price: p.precio,
@@ -135,7 +136,7 @@ export default function ManageProducts() {
         fd.append('descripcion', form.description.trim());
         fd.append('disponible', form.available);
         if (imageFile) fd.append('imagen', imageFile);
-        response = await fetch(`http://localhost:3001/api/products/${editTarget.id}`, {
+        response = await fetch(`${API_URL}/api/products/${editTarget.id}`, {
           method: 'PUT',
           body: fd,
         });
@@ -147,7 +148,7 @@ export default function ManageProducts() {
         fd.append('descripcion', form.description.trim());
         fd.append('disponible', form.available);
         if (imageFile) fd.append('imagen', imageFile);
-        response = await fetch('http://localhost:3001/api/products', {
+        response = await fetch(`${API_URL}/api/products`, {
           method: 'POST',
           body: fd,
         });
@@ -180,7 +181,7 @@ export default function ManageProducts() {
     if (!deleteTarget) return;
     setDeleting(true);
     try {
-      const response = await fetch(`http://localhost:3001/api/products/${deleteTarget.id}`, { method: 'DELETE' });
+      const response = await fetch(`${API_URL}/api/products/${deleteTarget.id}`, { method: 'DELETE' });
       if (!response.ok) throw new Error('Error al eliminar');
       setProducts(prev => prev.filter(p => p.id !== deleteTarget.id));
       setDeleteTarget(null);

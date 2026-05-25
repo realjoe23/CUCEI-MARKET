@@ -6,6 +6,7 @@
 
 import React, { useState, useEffect } from 'react';
 import StoreCard from '../../components/StoreCard/StoreCard';
+import { API_URL } from '../../config';
 import './Home.css';
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     const cargarPuestos = async () => {
       try {
-        const res = await fetch('http://localhost:3001/api/stores');
+        const res = await fetch(`${API_URL}/api/stores`);
         const data = await res.json();
         setStores(data.map(s => ({
           id:       s.id_puesto,

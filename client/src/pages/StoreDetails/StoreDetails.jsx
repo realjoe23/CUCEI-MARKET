@@ -7,6 +7,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { API_URL } from '../../config';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import './StoreDetails.css';
 
@@ -29,9 +30,9 @@ export default function StoreDetails() {
     const cargarDatos = async () => {
       try {
         const [storeRes, prodRes, revRes] = await Promise.all([
-          fetch(`http://localhost:3001/api/stores/${id}`),
-          fetch(`http://localhost:3001/api/stores/${id}/products`),
-          fetch(`http://localhost:3001/api/stores/${id}/reviews`),
+          fetch(`${API_URL}/api/stores/${id}`),
+          fetch(`${API_URL}/api/stores/${id}/products`),
+          fetch(`${API_URL}/api/stores/${id}/reviews`),
         ]);
         const storeData = await storeRes.json();
         const prodData  = await prodRes.json();
@@ -70,7 +71,7 @@ export default function StoreDetails() {
     if (!rating) { setReviewMsg('Selecciona una calificación.'); return; }
     setSubmitting(true);
     try {
-      const response = await fetch(`http://localhost:3001/api/stores/${id}/reviews`, {
+      const response = await fetch(`${API_URL}/api/stores/${id}/reviews`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_usuario: user.id_usuario, calificacion: rating, comentario: comment.trim() }),

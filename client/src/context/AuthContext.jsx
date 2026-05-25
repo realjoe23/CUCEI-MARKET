@@ -1,5 +1,6 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { API_URL } from '../config';
 
 const AuthContext = createContext(null);
 
@@ -25,7 +26,7 @@ export function AuthProvider({ children }) {
   // 2. Método de Registro conectado a tu Node.js (Supabase)
   const register = async (formDataToSend) => {
     try {
-      const response = await fetch('http://localhost:3001/api/register', {
+      const response = await fetch(`${API_URL}/api/register`, {
         method: 'POST',
         body: formDataToSend, // Aquí enviamos el FormData que incluye el archivo
       });
@@ -45,7 +46,7 @@ export function AuthProvider({ children }) {
   // 3. Método de Login (Lo implementaremos pronto en Node)
   const login = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:3001/api/login', {
+      const response = await fetch(`${API_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ correo: email, password }),
