@@ -1,4 +1,4 @@
-# 🛒 CUCEI Market
+#  CUCEI Market
 
 <div align="center">
 
@@ -7,7 +7,7 @@
 ![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-🌐 **Demo en vivo:** [cucei-market.vercel.app](https://cucei-market.vercel.app)
+ **Demo en vivo:** [cucei-market.vercel.app](https://cucei-market.vercel.app)
 
 **Plataforma de administración y catálogo de puestos comerciales del CUCEI, Universidad de Guadalajara.**
 
@@ -15,13 +15,13 @@
 
 ---
 
-## 📌 Descripción
+##  Descripción
 
 CUCEI Market es una aplicación web progresiva (PWA) que permite a vendedores del campus universitario registrar y administrar sus puestos comerciales, gestionar su catálogo de productos y recibir reseñas de los compradores. Los administradores cuentan con un panel de control completo para aprobar solicitudes de registro y gestionar el estado de los puestos.
 
 ---
 
-## 👥 Equipo de desarrollo
+##  Equipo de desarrollo
 
 | Nombre                 | Rol                    |
 | ---------------------- | ---------------------- |
@@ -32,16 +32,16 @@ CUCEI Market es una aplicación web progresiva (PWA) que permite a vendedores de
 
 ---
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
-### 👤 Autenticación
+###  Autenticación
 
 - Registro de vendedores con validación de correo universitario (`@alumnos.udg.mx`, `@udg.mx`)
 - Subida obligatoria de Kardex certificado en PDF para verificación
 - Login con JWT y sesión persistente
 - Roles diferenciados: `admin` y `vendedor`
 
-### 🏪 Vendedor
+###  Vendedor
 
 - Registrar uno o múltiples puestos comerciales
 - Gestionar catálogo de productos (agregar, editar, eliminar)
@@ -49,7 +49,7 @@ CUCEI Market es una aplicación web progresiva (PWA) que permite a vendedores de
 - Selector de puesto activo al tener varios registrados
 - Vista de estado del puesto (activo / inactivo / rechazado)
 
-### 🔧 Administrador
+###  Administrador
 
 - Panel de control con métricas en tiempo real
 - Aprobar, rechazar o suspender cuentas de vendedores
@@ -57,7 +57,7 @@ CUCEI Market es una aplicación web progresiva (PWA) que permite a vendedores de
 - Aprobar, desactivar o rechazar puestos del campus
 - Gestión de compradores
 
-### 🏠 Catálogo Público
+###  Catálogo Público
 
 - Vista de todos los puestos activos del campus
 - Búsqueda por nombre, categoría o ubicación
@@ -66,7 +66,7 @@ CUCEI Market es una aplicación web progresiva (PWA) que permite a vendedores de
 
 ---
 
-## 🏗️ Arquitectura
+##  Arquitectura
 
 El proyecto sigue una arquitectura de **tres capas cliente-servidor**:
 
@@ -89,7 +89,7 @@ El proyecto sigue una arquitectura de **tres capas cliente-servidor**:
 
 ---
 
-## 🗄️ Estructura de la base de datos
+##  Estructura de la base de datos
 
 ### Tabla `usuarios`
 
@@ -145,7 +145,7 @@ El proyecto sigue una arquitectura de **tres capas cliente-servidor**:
 
 ---
 
-## 📁 Estructura del proyecto
+##  Estructura del proyecto
 
 ```
 CUCEI_MARKET/
@@ -181,7 +181,7 @@ CUCEI_MARKET/
 
 ---
 
-## ⚙️ Requisitos del sistema
+##  Requisitos del sistema
 
 ### Software necesario
 
@@ -198,7 +198,7 @@ CUCEI_MARKET/
 
 ---
 
-## 🚀 Instalación y configuración
+##  Instalación y configuración
 
 ### 1. Clonar el repositorio
 
@@ -309,7 +309,7 @@ CREATE POLICY "Lectura productos" ON storage.objects
 
 ---
 
-## ▶️ Ejecución
+##  Ejecución
 
 Necesitas **dos terminales** abiertas simultáneamente:
 
@@ -331,7 +331,7 @@ npm run dev
 
 ---
 
-## 📖 Mini manual de uso
+##  Mini manual de uso
 
 ### Registrarse como vendedor
 
@@ -369,7 +369,7 @@ npm run dev
 
 ---
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 ### Autenticación
 
@@ -414,7 +414,7 @@ npm run dev
 
 ---
 
-## 🛠️ Stack tecnológico
+##  Stack tecnológico
 
 ### Frontend
 
@@ -438,7 +438,7 @@ npm run dev
 
 ---
 
-## 📄 Licencia
+##  Licencia
 
 Proyecto académico — Universidad de Guadalajara, CUCEI  
 Ingeniería en Computación — Ingeniería de Software  
